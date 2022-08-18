@@ -25,8 +25,8 @@ function bandpass_filter {
     subject=$(basename $ts _regressed.nii.gz) 
     
     tr=1.2 # edit this
-    bandpass_from=0.01
-    bandpass_to=0.1
+    bandpass_from=0.01 # edit this to change filter lower limit
+    bandpass_to=0.1 # edit this to change filter upper limit
     
     brainmask=path/to/chd8_functional_template_mask.nii.gz # edit this
 
@@ -35,7 +35,7 @@ function bandpass_filter {
         -dt $tr \
         -mask $brainmask \
         -prefix ${subject}_filtered.nii.gz \
-        0.01 0.1 \
+        ${bandpass_from} ${bandpass_to} \
         $ts 
 
     # this adds the mean to filtered ts, useful for carpet plot 
