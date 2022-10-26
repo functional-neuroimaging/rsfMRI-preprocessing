@@ -18,7 +18,17 @@
 # (2019)
 # -----------------------------------------------------------
 
+# The script runs in parallel on two levels:
+# 1) each file is registered in with others
+# 2) within each file, the Ants function can be parallelized 
+# The following two variables control the number of cores used by each level.
+# example:
+# ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=2 # this sets the number of threads used by Ants
+# numjobs=3 # this sets the number of scans registered in parallel
+# this will use a 6 jobs (2x3).
+# Set the combination of the two appropriately.
 
+export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=2 # edit this
 numjobs=4 # edit this
 
 function register_ts {
